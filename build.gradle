@@ -36,7 +36,7 @@ dependencies {
 	compile('com.graphql-java:graphql-spring-boot-starter:3.9.2')
     compile('com.graphql-java:graphql-java-tools:4.1.2')
 
-    compileOnly('org.projectlombok:lombok')
+    compile('org.projectlombok:lombok')
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')

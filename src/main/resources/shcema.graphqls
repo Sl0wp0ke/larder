@@ -1,6 +1,10 @@
 type User {
-  id: ID!
-  name: String!
-  lastName: String!
-  sex: bool!
+    id: ID
+    name: String
+    lastName: String
+    sex: bool
+}
+
+type Query{
+    allUser: [User]
 }
