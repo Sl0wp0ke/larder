@@ -2,7 +2,7 @@ type User {
     id: ID
     name: String
     lastName: String
-    sex: bool
+    sex: Boolean!
 }
 
 type Query{
