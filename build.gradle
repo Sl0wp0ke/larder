@@ -12,14 +12,14 @@ buildscript {
 	}
 }
 
-apply plugin: 'groovy'
+apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'com.example'
+group = 'com.galley'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.9
+sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
@@ -29,15 +29,16 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.codehaus.groovy:groovy')
-	compile('com.graphql-java:graphql-spring-boot-starter:3.9.2')
-    compile('com.graphql-java:graphql-java-tools:4.1.2')
+//	compile('org.springframework.boot:spring-boot-starter-security')
+
+//	compile('com.graphql-java:graphql-spring-boot-starter:3.9.2')
+    compile('com.graphql-java:graphql-java:3.0.0')
+	compile('com.graphql-java:graphql-java-tools:3.2.0')
 
     compile('org.projectlombok:lombok')
 
-	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('org.springframework.security:spring-security-test')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+//	testCompile('org.springframework.security:spring-security-test')
 }

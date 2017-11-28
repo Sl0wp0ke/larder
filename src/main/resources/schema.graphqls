@@ -1,4 +1,4 @@
-type User {
+ type User {
     id: ID
     name: String
     lastName: String
@@ -6,5 +6,9 @@ type User {
 }
 
 type Query{
-    allUser: [User]
+    allUsers: [User]
+}
+
+schema {
+  query: Query
 }
