@@ -10,6 +10,13 @@ import java.util.List;
 @Component
 public class Query implements GraphQLRootResolver {
     public List<User> getAllUsers() {
-        return new ArrayList<User>();
+        ArrayList<User> users = new ArrayList<>();
+        User user = new User();
+        user.setId(1);
+        user.setName("gregory");
+        user.setLastName("leps");
+        user.setSex(false);
+        users.add(user);
+        return users;
     }
 }
