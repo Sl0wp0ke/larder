@@ -1,6 +1,6 @@
 package com.galley.larder.configuration;
 
-import com.galley.larder.api.graphql.resolver.Query;
+import com.galley.larder.api.graphql.resolver.ProductResolver;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import static com.coxautodev.graphql.tools.SchemaParser.newParser;
 @Configuration
 public class GraphQLConfiguration {
     @Autowired
-    private Query query;
+    private ProductResolver productResolver;
 
     @Bean
     public GraphQL graphQL() {
@@ -24,7 +24,7 @@ public class GraphQLConfiguration {
     public GraphQLSchema graphQLSchema() {
         return newParser()
                 .file("schema.graphqls")
-                .resolvers(query)
+                .resolvers(productResolver)
                 .build()
                 .makeExecutableSchema();
     }

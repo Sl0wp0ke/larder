@@ -1,12 +1,9 @@
- type User {
-    id: ID
-    name: String
-    lastName: String
-    sex: Boolean!
+ type Prodact {
+    name: String!
 }
 
 type Query{
-    allUsers: [User]
+    getProdact(barcode: Long): Prodact
 }
 
 schema {
