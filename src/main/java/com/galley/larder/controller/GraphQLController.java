@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-@RestController()
+//@RestController()
 public class GraphQLController {
 
     private GraphQLService graphQLService;
 
-    @Autowired
+//    @Autowired
     public GraphQLController(GraphQLService graphQLService) {
         this.graphQLService = graphQLService;
     }
 
-    @RequestMapping(value = "/graphql",method = RequestMethod.POST)
+//    @RequestMapping(value = "/graphql",method = RequestMethod.POST)
     public Object handle(@RequestBody Map<String,String> query) {
         return graphQLService.resolve(query);
     }

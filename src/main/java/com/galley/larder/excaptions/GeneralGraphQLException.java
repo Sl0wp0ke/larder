@@ -3,17 +3,15 @@ package com.galley.larder.excaptions;
 import graphql.ErrorType;
 import graphql.GraphQLError;
 import graphql.language.SourceLocation;
-import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
-public class ProductNotFoundException extends GeneralGraphQLException {
-    public ProductNotFoundException() {
-        super("", HttpStatus.NOT_FOUND.value());
-    }
+public class GeneralGraphQLException extends RuntimeException implements GraphQLError {
+    private int code;
 
-    public ProductNotFoundException(String message) {
-        super(message, HttpStatus.NOT_FOUND.value());
+    public GeneralGraphQLException(String message, int code) {
+        super(message);
+        this.code = code;
     }
 
     @Override
@@ -24,5 +22,13 @@ public class ProductNotFoundException extends GeneralGraphQLException {
     @Override
     public ErrorType getErrorType() {
         return ErrorType.DataFetchingException;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 }
