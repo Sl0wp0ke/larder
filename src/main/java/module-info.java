@@ -1,12 +1,13 @@
-module larder.main {
+module com.galley.larder {
+    requires java.base;
     requires graphql.java;
-    requires jdk.incubator.httpclient;
-    requires graphql.java.tools;
-    requires spring.context;
-    requires graphql.java.servlet;
-    requires spring.web;
-    requires spring.beans;
-    requires lombok;
     requires spring.boot;
     requires spring.boot.autoconfigure;
+    requires spring.context;
+    requires spring.web;
+    requires graphql.java.servlet;
+    requires graphql.java.tools;
+    requires jdk.incubator.httpclient;
+    requires spring.beans;
+    requires lombok;
 }
