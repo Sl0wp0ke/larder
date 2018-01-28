@@ -3,42 +3,31 @@ package com.galley.larder.api.graphql.resolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.galley.larder.excaptions.ProductNotFoundException;
 import com.galley.larder.models.Product;
-import jdk.incubator.http.HttpClient;
-import jdk.incubator.http.HttpRequest;
-import jdk.incubator.http.HttpResponse;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+
 
 @Component
 public class ProductResolver implements GraphQLQueryResolver {
     public Product getProdact(long barcode) {
-        HttpClient httpClient = HttpClient.newHttpClient();
-
-        URI uri = null;
+        String url = "http://ean13.info/" + barcode + ".htm";
         try {
-            uri = new URI("http://ean13.info/4820017000277.htm");
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(uri)
-                .GET()
-                .build();
-
-        try {
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandler.asString());
+            Document document = Jsoup.connect(url).get();
+            Elements elements = document.getElementsByAttributeValue("class", "item-card");
+            Element element = elements.get(0);
+            Elements h1 = element.getElementsByTag("h1");
+            Element nameNode = h1.get(0);
             Product product = new Product();
-            product.setName(response.body());
+            product.setName(nameNode.text());
             return product;
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
-
 
         throw new ProductNotFoundException();
     }

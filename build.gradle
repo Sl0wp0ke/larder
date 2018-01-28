@@ -30,12 +30,13 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
-//	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+	compile('org.springframework.boot:spring-boot-starter-data-mongodb')
 
 	compile('com.graphql-java:graphql-spring-boot-starter:3.6.0')
 	compile('com.graphql-java:graphiql-spring-boot-starter:3.6.0')
 	compile('com.graphql-java:graphql-java-tools:4.0.0')
 
+	compile('org.jsoup:jsoup:1.11.2')
     compile('org.projectlombok:lombok')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
