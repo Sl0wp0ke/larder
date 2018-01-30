@@ -1,8 +1,11 @@
 package com.galley.larder.models;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Objects;
 
 public class Product {
+    @Id
     int id;
     long barcode;
     String name;
